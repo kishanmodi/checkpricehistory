@@ -1,13 +1,13 @@
 import telebot,time,os
 from selenium import webdriver
-from flask import Flask ,request
+from flask import Flask, request
 
 options = webdriver.ChromeOptions()
 options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
-browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
 
 bot_token ="1322904062:AAGdsI7O7uNG4f1rhDmUriDuJFOQ40_3uTY"
 bot = telebot.TeleBot(token=bot_token)
@@ -15,28 +15,28 @@ bot = telebot.TeleBot(token=bot_token)
 server = Flask(__name__)
 
 kishan="https://t.me/kishanmodi/"
-browser.get(r'https://pricehistory.in/')
+driver.get(r'https://pricehistory.in/')
 
 def Check_price(product_url):
-    #browser.get(r'https://pricehistory.in/')
+    #driver.get(r'https://pricehistory.in/')
     #time.sleep(5)
-    search_item = browser.find_element_by_css_selector('body > div.w-full.mx-auto.bg-orange-200.dark\:bg-purple-800 > div > div > div > div:nth-child(4) > div.md\:flex.mt-2 > input')
+    search_item = driver.find_element_by_css_selector('body > div.w-full.mx-auto.bg-orange-200.dark\:bg-purple-800 > div > div > div > div:nth-child(4) > div.md\:flex.mt-2 > input')
     search_item.send_keys(product_url)
     #search_item.submit()
     time.sleep(5)
-    click_on_your_product = browser.find_element_by_css_selector('#trackPriceBtn')
+    click_on_your_product = driver.find_element_by_css_selector('#trackPriceBtn')
     click_on_your_product.click()
     #headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',}
-    #req = requests.post(browser.current_url, headers=headers)
+    #req = requests.post(driver.current_url, headers=headers)
     #req.raise_for_status()
     time.sleep(7)
-    product_n= browser.find_element_by_css_selector('#name').text
-    lowest_price =  browser.find_element_by_css_selector('#lowestPrice').text
-    highest_price = browser.find_element_by_css_selector('#highestPrice').text
-    current_price = browser.find_element_by_css_selector('#currentPrice').text
+    product_n= driver.find_element_by_css_selector('#name').text
+    lowest_price =  driver.find_element_by_css_selector('#lowestPrice').text
+    highest_price = driver.find_element_by_css_selector('#highestPrice').text
+    current_price = driver.find_element_by_css_selector('#currentPrice').text
     if current_price=="Checking...":
         time.sleep(15)
-        current_price = browser.find_element_by_css_selector('#currentPrice').text
+        current_price = driver.find_element_by_css_selector('#currentPrice').text
     else:
         pass
 
