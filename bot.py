@@ -9,14 +9,14 @@ options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
 
-bot_token ="1322904062:AAGdsI7O7uNG4f1rhDmUriDuJFOQ40_3uTY"
+bot_token ="1405544080:AAFuX9f82_Vl7ukp_EdJDkhV95mNFIJ8zp0"
 bot = telebot.TeleBot(token=bot_token)
 
 server = Flask(__name__)
 
 kishan="https://t.me/kishanmodi/"
 driver.get(r'https://pricehistory.in/')
-
+time.sleep(2)
 def Check_price(product_url):
     #driver.get(r'https://pricehistory.in/')
     #time.sleep(5)
@@ -51,7 +51,7 @@ def send_help(message):
     bot.reply_to(message,'If You Find any problem or bug in this bot Contact\n' +kishan+"\nThank You")
 
 
-@bot.message_handler(func = lambda msg: msg.text!=" ")
+@bot.message_handler(func = lambda msg: msg.text!="stop")
 def at_answer(message):
     url = message.text
     #flipkart = "www.flipkart.com"
