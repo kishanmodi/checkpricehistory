@@ -1,6 +1,6 @@
-import telebot,requests,time,os
+import telebot,time,os
 from selenium import webdriver
-from flask import Flask
+from flask import Flask ,request
 
 options = webdriver.ChromeOptions()
 options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -15,10 +15,11 @@ bot = telebot.TeleBot(token=bot_token)
 server = Flask(__name__)
 
 kishan="https://t.me/kishanmodi/"
+browser.get(r'https://pricehistory.in/')
 
 def Check_price(product_url):
-    browser.get(r'https://pricehistory.in/')
-    time.sleep(5)
+    #browser.get(r'https://pricehistory.in/')
+    #time.sleep(5)
     search_item = browser.find_element_by_css_selector('body > div.w-full.mx-auto.bg-orange-200.dark\:bg-purple-800 > div > div > div > div:nth-child(4) > div.md\:flex.mt-2 > input')
     search_item.send_keys(product_url)
     #search_item.submit()
@@ -69,7 +70,6 @@ def at_answer(message):
         print(low_price)
         fnamee=message.from_user.first_name
         #lname=message.from_user.last_name
-
         bot.reply_to(message,'\tThe Price Histroy For the Product\n'+product_name+'\n****************************\nCurrent Price is '+ cur_price +'\nLowest Price was '+ low_price +'\nHighest Price was '+ max_price+'\n****************************')
         bot.send_message(chat_id=418305384, text = fnamee + " used the Price History Bot For \n" + product_name +"\nMessage Id="+ str(message.chat.id) )
 
