@@ -71,8 +71,7 @@ def at_answer(message):
         fnamee=message.from_user.first_name
         #lname=message.from_user.last_name
         bot.reply_to(message,'\tThe Price Histroy For the Product\n'+product_name+'\n****************************\nCurrent Price is '+ cur_price +'\nLowest Price was '+ low_price +'\nHighest Price was '+ max_price+'\n****************************')
-        bot.send_message(chat_id=418305384, text = fnamee + " used the Price History Bot For \n" + product_name +"\nMessage Id="+ str(message.chat.id) )
-
+    bot.send_message(chat_id=418305384, text = fnamee + " used the Price History Bot For \n" + product_name +"\nMessage Id="+ str(message.chat.id) )
 
 @server.route('/' + bot_token, methods=['POST'])
 def getMessage():
@@ -88,13 +87,3 @@ def webhook():
 if __name__ == "__main__":
     server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
 
-
-
-'''
-while True:
-    try:
-        bot.polling()
-    except Exception:
-        time.sleep(15)
-
-'''
