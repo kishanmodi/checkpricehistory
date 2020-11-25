@@ -9,7 +9,7 @@ options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
 
-bot_token ="1405544080:AAFuX9f82_Vl7ukp_EdJDkhV95mNFIJ8zp0"
+bot_token ="1322904062:AAGdsI7O7uNG4f1rhDmUriDuJFOQ40_3uTY"
 bot = telebot.TeleBot(token=bot_token)
 
 server = Flask(__name__)
