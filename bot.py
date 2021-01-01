@@ -9,7 +9,7 @@ options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
 
-bot_token ="1322904062:AAGdsI7O7uNG4f1rhDmUriDuJFOQ40_3uTY"
+bot_token ="bot token here"
 bot = telebot.TeleBot(token=bot_token)
 
 server = Flask(__name__)
@@ -81,7 +81,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://price-tracker-amazon.herokuapp.com/' + bot_token)
+    bot.set_webhook(url='https://your.herokuapp.com/' + bot_token)
     return "!", 200
 
 if __name__ == "__main__":
